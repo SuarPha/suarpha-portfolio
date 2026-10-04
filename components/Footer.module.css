@@ -1,0 +1,44 @@
+.footer {
+  background: var(--color-bg);
+  padding: var(--space-5) 0 var(--space-4);
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.badge {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 0.2s var(--ease);
+}
+
+.badge:hover {
+  transform: scale(1.06);
+}
+
+.copyright {
+  margin-top: var(--space-3);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}

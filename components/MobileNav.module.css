@@ -1,0 +1,72 @@
+.wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  padding: calc(16px + env(safe-area-inset-top, 0px)) 16px 0;
+  pointer-events: none;
+}
+
+@media (min-width: 900px) {
+  .wrap {
+    display: none;
+  }
+}
+
+.bar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 6px;
+  box-shadow: 0 16px 40px rgba(17, 17, 17, 0.14);
+  max-width: 100%;
+}
+
+.item {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 10px 12px;
+  border-radius: 999px;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color 0.25s var(--ease), background-color 0.25s var(--ease), padding 0.3s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.itemActive {
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  padding-right: 14px;
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-width 0.3s var(--ease), opacity 0.2s var(--ease);
+}
+
+.itemActive .label {
+  max-width: 90px;
+  opacity: 1;
+}

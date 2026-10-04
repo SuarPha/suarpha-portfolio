@@ -1,0 +1,121 @@
+.header {
+  max-width: 50ch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.intro {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.case {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  background: var(--color-bg-raised);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.case:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(17, 17, 17, 0.09);
+  border-color: #d6d2c6;
+}
+
+@media (min-width: 900px) {
+  .case {
+    grid-template-columns: 1fr 1fr;
+    padding: var(--space-4);
+    gap: var(--space-5);
+  }
+
+  .caseReverse .media {
+    order: 2;
+  }
+
+  .caseReverse .content {
+    order: 1;
+  }
+}
+
+.media {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 320px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+@media (min-width: 900px) {
+  .media {
+    height: 420px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2);
+}
+
+@media (min-width: 900px) {
+  .content {
+    padding: var(--space-3) var(--space-2);
+  }
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.title {
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.9rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+.subheading {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-top: var(--space-1);
+}
+
+.stackRow,
+.workedRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.ctaLink {
+  margin-top: var(--space-1);
+  font-size: 1rem;
+}

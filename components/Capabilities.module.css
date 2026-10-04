@@ -1,0 +1,106 @@
+.wrap {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 44ch;
+  margin-bottom: var(--space-6);
+}
+
+.heading {
+  font-size: clamp(1.9rem, 1.4rem + 2.2vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  gap: 1px;
+  background: var(--color-dark-border);
+  border: 1px solid var(--color-dark-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  background: var(--color-dark-bg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: background-color 0.3s var(--ease);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+
+.card:hover {
+  background: var(--color-dark-raised);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.number {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #b9aeff;
+  transition: transform 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.card:hover .number {
+  color: #fff;
+  transform: translateX(3px);
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  transition: color 0.3s var(--ease);
+}
+
+.card:hover .title {
+  color: #b9aeff;
+}
+
+.description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-dark-muted);
+  flex-grow: 1;
+}
+
+.techRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: var(--space-1);
+}
