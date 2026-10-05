@@ -26,22 +26,39 @@ function Field({ label, name, type = "text", textarea = false }) {
 }
 
 export default function Contact() {
-  function handleSubmit(e) {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const name = data.get("name");
-    const phone = data.get("phone");
-    const email = data.get("email");
-    const message = data.get("message");
+ async function handleSubmit(e) {
+  e.preventDefault();
 
-    const subject = encodeURIComponent(`New message from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\n${message}`
-    );
+  const form = e.currentTarget;
+  const data = new FormData(form);
 
-    window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+  const payload = {
+    name: data.get("name"),
+    phone: data.get("phone"),
+    email: data.get("email"),
+    message: data.get("message"),
+  };
+
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to send message");
+    }
+
+    alert("Message sent successfully!");
+    form.reset();
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong. Please try again.");
   }
-
+}
   return (
     <section id="contact" className="section" aria-labelledby="contact-heading">
       <div className="container">
